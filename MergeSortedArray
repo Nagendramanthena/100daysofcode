@@ -46,3 +46,26 @@ class Solution {
     return A;
     }
 }
+
+// day1 7th question
+
+// duplicate element O(n)
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        boolean res = false;
+        int number = nums[0];
+        
+        for(int i=1;i<nums.length;i++){
+            if(number == nums[i]){
+                res = true;
+                break;
+            }
+            else{
+                number = nums[i];
+            }
+        }
+     return res;  
+    }
+}
