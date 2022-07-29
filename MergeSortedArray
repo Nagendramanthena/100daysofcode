@@ -30,3 +30,19 @@ class Solution {
     }
     
 }
+
+// day1 6th sum
+
+//runningsum
+
+class Solution {
+    public int[] runningSum(int[] nums) {
+     int A[] = new int[nums.length];
+        int runsum =0;
+     for(int i=0;i<nums.length;i++){
+         runsum = runsum+nums[i];
+         A[i] = runsum;
+     }
+    return A;
+    }
+}
