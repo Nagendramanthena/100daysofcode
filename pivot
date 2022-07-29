@@ -1,0 +1,50 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int pivot=-1;
+        boolean flag = true;
+        for(int i=0;i<nums.length;i++){
+            if(i!=0 && i!=nums.length-1 && flag){
+                int sumright=0;
+                int sumleft = 0;
+                for(int j=i+1;j<nums.length;j++){
+                    sumright = sumright+nums[j];
+                }
+                for(int k=i-1;k>=0;k--){
+                    sumleft = sumleft+nums[k];
+                }
+                if(sumright == sumleft){
+                    pivot=i;
+                    flag = false;
+                    break;
+                }
+            }
+            else if(i==0 && flag){
+                int sumr=0;
+                int suml=0;
+                for(int j=1;j<nums.length;j++){
+                    sumr = sumr+nums[j];
+                }
+                if(sumr == suml){
+                    pivot=i;
+                    flag = false;
+                    break;
+                }
+            }
+            
+        else if(i==nums.length-1 && flag){
+            int suml=0;
+            int sumr=0;
+            for(int j=i-1;j>=0;j--){
+                suml=suml+nums[j];
+            }
+            if(suml==sumr){
+                pivot = i;
+                flag = false;
+                break;
+            }
+        }
+        }
+    
+    return pivot;   
+    }
+}
