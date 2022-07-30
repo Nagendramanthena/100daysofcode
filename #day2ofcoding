@@ -62,3 +62,36 @@ class Solution {
 logic:[1,0,0,0,1,1,0,0]
 we need to put pointers at end 
 and we need to change if both elementts are  same
+
+
+// day2 4th question
+
+class Solution {
+    public List<Integer> luckyNumbers (int[][] nums) {
+        List<Integer> n = new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++){
+            int minrow = nums[i][0];
+            int index = 0;
+            for(int j=1;j<nums[i].length;j++){
+                if(nums[i][j]<minrow){
+                    minrow  = nums[i][j];
+                    index = j;
+                }
+                
+            }
+            int maxcol=nums[0][index];
+            for(int k=1;k<nums.length;k++){
+                if(nums[k][index]>maxcol){maxcol = nums[k][index];}
+                }
+            if(minrow>=maxcol && !n.contains(minrow)){
+                n.add(minrow);
+            }
+            }
+            
+        
+     return n;
+        
+    }
+}
+
+logic:finding minrow in col and finding max in that col;
