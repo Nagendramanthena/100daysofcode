@@ -95,3 +95,46 @@ class Solution {
 }
 
 logic:finding minrow in col and finding max in that col;
+
+
+//  Reshape matrix
+
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int A[][] = new int[r][c];
+        int row=0;
+        int column=0;
+        if(mat.length*mat[0].length == r*c){
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                if(row<r && column<c){
+                    A[row][column] = mat[i][j];
+                    column++;
+                }
+                else if(row>=r && column<c){
+                    row=0;
+                    column++;
+                    A[row][column] = mat[i][j];
+                    row++;
+                }
+                else if(row<r && column>=c){
+                    column = 0;
+                    row++;
+                    A[row][column] = mat[i][j];
+                    column++;
+                }
+            
+                
+            }
+        }
+         return A;
+        }
+        else{
+            int b[][] = new int[mat.length][mat[0].length];
+            for(int i = 0; i < mat.length; i++)
+          b[i] =  mat[i].clone();
+            return b;
+        }
+        
+    }
+}
