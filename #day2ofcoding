@@ -16,3 +16,22 @@ class Solution {
       return max_wealth;  
     }
 }
+
+// diagonal sum
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int diagonals=0;
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                if(i==j){
+                    diagonals = diagonals + mat[i][j];
+                }
+                else if(i+j == (mat.length-1) && i!=j){
+                    diagonals = diagonals+ mat[i][j];
+                }
+            }
+        }
+     return diagonals;
+    }
+}
