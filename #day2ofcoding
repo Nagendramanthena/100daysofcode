@@ -138,3 +138,30 @@ class Solution {
         
     }
 }
+
+//BuildingsProjection(coding ninjas)
+public class Solution {
+    public static int projectionArea(int[][] grid) {
+        // Dimension of grid.
+        int n =  grid.length;
+        
+        int result = 0;
+        for(int i = 0; i < n; i++) {
+            int rowMax = 0, colMax = 0;
+            for(int j = 0; j < n; j++) {
+                if(grid[i][j] > 0) {
+                    // In the XY plane, the shadow made by each building will be 1 square.
+                    result++;
+                }
+                // In the YZ plane, the shadow made will be the largest value for each row in the grid.
+                rowMax = Math.max(rowMax, grid[i][j]);
+                // In the ZX plane, the shadow made will be the largest value for each column in the grid.
+                colMax = Math.max(colMax, grid[j][i]);
+            }
+            
+            result = result + rowMax + colMax;
+        }
+        
+        return result;
+    }
+}
