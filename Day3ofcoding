@@ -23,3 +23,14 @@ class Solution {
     }
 }
 logic :count no of 1s in rows and cols
+
+// string to lowercase
+
+class Solution {
+    public String toLowerCase(String s) {
+            String sk = s.toLowerCase();
+        return sk;
+        
+    }
+}
+
