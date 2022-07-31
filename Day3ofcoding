@@ -86,4 +86,19 @@ public class Solution {
 
 }
 
-// 
+// strString 
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int k = 0;
+        if(needle.length()==0){
+            k=0;
+        }
+        else if(needle.length()!=0){
+            int l = haystack.indexOf(needle);
+            k=l;
+     
+        }
+    return k;
+    }
+}
