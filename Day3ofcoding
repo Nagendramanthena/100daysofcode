@@ -34,3 +34,31 @@ class Solution {
     }
 }
 
+//Alike Strings
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        int s1vo = 0;
+        int s2vo=0;
+        String ss = s.toLowerCase();
+        int l = (s.length()/2);
+        String s1 = ss.substring(0,l);
+        String s2 = ss.substring(l,2*l);
+        for(int i=0;i<s1.length();i++){
+            if(s1.charAt(i) == 'a' | s1.charAt(i) == 'e' | s1.charAt(i) =='i' | s1.charAt(i) == 'o' | s1.charAt(i) == 'u'){
+                s1vo++;
+            }
+        }
+        for(int j=0;j<s2.length();j++){
+             if(s2.charAt(j) == 'a' | s2.charAt(j) == 'e' | s2.charAt(j) =='i' | s2.charAt(j) == 'o' | s2.charAt(j) == 'u'){
+                s2vo++;
+            }
+        }
+        boolean b = false;
+        if(s1vo == s2vo){
+            b= true;
+        }
+        
+        return b;
+        
+    }
+}
