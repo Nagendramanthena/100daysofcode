@@ -34,6 +34,8 @@ class Solution {
     }
 }
 
+//
+
 //Alike Strings
 class Solution {
     public boolean halvesAreAlike(String s) {
@@ -122,5 +124,29 @@ class Solution {
             output[i] = left[i]*right[i];
         }
         return output;
+    }
+}
+
+// Maximum water-O(n^2);
+class Solution {
+    public int maxArea(int[] height) {
+       int area=Integer.MIN_VALUE;
+       for(int i=0;i<height.length;i++){
+           for(int j=0;j<height.length;j++){
+               if(i!=j && height[i]>=height[j]){
+                 int l = height[j]*(Math.abs(j-i));
+                   if(area<l){
+                       area = l;
+                   }
+               }
+               else if(i!=j &&  height[i]<height[j]){
+                   int k = height[i]*Math.abs(j-i);
+                   if(area<k){
+                       area = k;
+                   }
+               }
+           }
+       }
+      return area;
     }
 }
