@@ -196,3 +196,30 @@ class Solution {
         return pos>=n;
     }
 }
+//Duplicate II
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        boolean b=false;
+        boolean bb = true;
+        for(int i=0;i<nums.length;i++){
+            if(bb){
+            int low = i;
+            int high = nums.length-1;
+            while(high>low && bb){
+                if(nums[i] == nums[high] && Math.abs(high-i) <=k){
+                    b = true;
+                    bb = false;
+                    break;
+                }
+              high--;  
+            }
+            }
+            else if(!bb){
+             break;
+            }
+        }
+        return b;
+    }
+}
+
+//
