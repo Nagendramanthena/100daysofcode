@@ -51,3 +51,26 @@ class Solution {
      return lastGoodIndexPosition == 0;
     }
 }
+
+// Median
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int a1 = nums1.length;int b1 = nums2.length;int c1 = a1+b1;double median=0;
+        int[] c = new int[c1];
+        System.arraycopy(nums1, 0, c, 0, a1);
+        System.arraycopy(nums2, 0, c, a1, b1);
+        Arrays.sort(c);
+        if(c1%2==0){
+            double d = 2.00;
+            median = (c[(c1/2)-1]+c[(c1/2)])/d;
+        }
+        else{
+            int b = c1/2;
+            median = c[b];
+        }
+        return median;
+    }
+}
+
+
