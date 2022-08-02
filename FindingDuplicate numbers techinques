@@ -116,3 +116,32 @@ Since 3 already exists at index 3 in the array [0,1,5,\underline3,4,3][0,1,5,
 3
 ​
  ,4,3], and we have another instance of 3 that we are trying to store there, clearly that's the duplicate number. Return 3 as the duplicate, and stop execution.
+ 
+ 
+ //Binary Search
+ class Solution {
+    
+    public int findDuplicate(int[] nums) {
+        // 'low' and 'high' represent the range of values of the target        
+        int low = 1, high = nums.length - 1;
+        int duplicate = -1;
+        
+        while (low <= high) {
+            int cur = (low + high) / 2;
+             // Count how many numbers in 'nums' are less than or equal to 'cur'
+            int count = 0;
+            for (int num : nums) {
+                if (num <= cur)
+                    count++;
+            }
+            
+            if (count > cur) {
+                duplicate = cur;
+                high = cur - 1;
+                } else {
+                low = cur + 1;
+            }
+        }
+        return duplicate;
+    }
+}
