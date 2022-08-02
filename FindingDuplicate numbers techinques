@@ -49,3 +49,70 @@ class Solution {
         return store(nums, 0);
     }
 }
+
+// technique
+Approach 4.1: Array as HashMap (Recursion)
+Note: Approaches 4.1 and 4.2 modify individual elements, and hence do not meet the problem constraints. However, they utilize an insightful concept that can help with similar problems.
+
+Intuition
+
+Use the Array as a HashMap -- map each number to its equivalent index in the array. For instance, map (and store) the number 5 to index 5 (i.e. nums[5] = 5nums[5]=5). Since there are (n + 1)(n+1) positions/indexes in the input array, and the numbers range from 11 to nn, at least one index will have more than one number (due to the pigeonhole principle).
+
+Since all numbers are in the range [1,n][1,n], no number will be mapped to index 0. So let's start with the number at index 0 since it must be out of place. Say that the number at index 0 is firstfirst. Then firstfirst needs to be stored at nums[first]nums[first]. But there's some other number at nums[first]nums[first] that needs to be stored at its respective location (and so on).
+
+If nums[first]nums[first] is the same as firstfirst, then we have found a duplicate. Otherwise, let's swap the numbers located at index 00 and at index firstfirst, and repeat this process with the new number at index 00.
+
+As we repeatedly apply this mapping, the duplicate number will, on its first instance, be mapped/stored correctly at its equivalent index, and then on its second occurrence, we will attempt to store it there again. When a number already exists at its correct index, and we attempt to store another instance of the same number there again, then we know that's the duplicate.
+
+Algorithm
+
+Start with the first index (index 00) of the array. Call store(nums, 0)store(nums,0) to store the number 00 at index 00.
+
+Note that because all input numbers are in the range [1, n][1,n], no number will ever be mapped to index 00. Hence, index 00 can hold any dummy value, including 00.
+store(nums, cur)store(nums,cur) uses the current number, curcur, as the target index. It first backs up the number that's stored at the equivalent position (nxt = nums[cur]nxt=nums[cur]), and then overwrites that index with curcur.
+
+Now we need to deal with the number that was backed up (i.e. nxtnxt). Recursively call storestore with this number as input (i.e. store(nums, nxt)store(nums,nxt)) so it too can be placed at its equivalent index.
+
+Repeat steps 2 and 3. At some point, nums[cur]nums[cur] will already contain the number curcur, in which case we have found the duplicate number.
+
+To illustrate the algorithm, let's consider an example [3,3,5,4,1,3][3,3,5,4,1,3]:
+
+store(nums, 0)store(nums,0)
+
+Here cur = 0cur=0 and nums[cur] = 3nums[cur]=3
+Back up the number 3 (that's at index 0)
+Store 0 at index 0. The array is now: [\underline0,3,5,4,1,3][ 
+0
+​
+ ,3,5,4,1,3]
+Recursively call store(nums, 3)store(nums,3)
+store(nums, 3)store(nums,3)
+
+Back up the number 4 (at index 3)
+Store 3 at index 3. The array is now: [0,3,5,\underline3,1,3][0,3,5, 
+3
+​
+ ,1,3]
+Now call store(nums, 4)store(nums,4)
+store(nums, 4)store(nums,4)
+
+Back up the number 1 (at index 4)
+Store 4 at index 4. The array is now [0,3,5,3,\underline4,3][0,3,5,3, 
+4
+​
+ ,3]
+Now call store(nums, 1)store(nums,1)
+store(nums, 1)store(nums,1)
+
+Back up the number 3 (at index 1)
+Store 1 at index 1. The array is now [0,\underline1,5,3,4,3][0, 
+1
+​
+ ,5,3,4,3]
+Now call store(nums, 3)store(nums,3)
+store(nums, 3)store(nums,3)
+
+Since 3 already exists at index 3 in the array [0,1,5,\underline3,4,3][0,1,5, 
+3
+​
+ ,4,3], and we have another instance of 3 that we are trying to store there, clearly that's the duplicate number. Return 3 as the duplicate, and stop execution.
