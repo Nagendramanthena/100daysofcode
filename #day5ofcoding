@@ -41,3 +41,19 @@ class Solution {
     }
  o(n);
  
+ // Kth smallest element in a sorted array
+ class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+     if(matrix.length == 1) return matrix[0][0];
+      int A[] = new int[matrix.length*matrix.length];int l=0;
+      for(int i=0;i<matrix.length;i++){
+          for(int j=0;j<matrix.length;j++){
+              A[l] = matrix[i][j];
+              l++;
+          }
+      }
+        Arrays.sort(A);
+        return A[k-1];
+    }
+}
+ 
