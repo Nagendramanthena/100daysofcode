@@ -1,0 +1,16 @@
+// My calender
+public class MyCalendar {
+    List<int[]> calendar;
+
+    MyCalendar() {
+        calendar = new ArrayList();
+    }
+
+    public boolean book(int start, int end) {
+        for (int[] k: calendar) {
+            if (k[0] < end && start < k[1]) return false;
+        }
+        calendar.add(new int[]{start, end});
+        return true;
+    }
+}
