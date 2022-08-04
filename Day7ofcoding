@@ -143,3 +143,22 @@ class Solution {
         return res;
     }
 }
+
+/////////////////////////// Search In Rotated Array //////////////
+class Solution {
+    public int search(int[] nums, int target) {
+        int targ =-1;
+        int a_pointer = 0;int b_pointer = nums.length-1;
+        while(a_pointer<=b_pointer){
+            if(nums[a_pointer] == target){
+                targ  =a_pointer;
+            }
+            else if(nums[b_pointer]==target){
+                targ  = b_pointer;
+            }
+            a_pointer++;
+            b_pointer--;
+        }
+      return targ;
+    }
+}
