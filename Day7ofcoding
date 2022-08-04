@@ -62,3 +62,26 @@ class Solution {
         return result;
     }
 }
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int A[] = new int[2];
+        int a_pointer = 0;
+        int b_pointer = nums.length-1;
+        while(a_pointer<b_pointer){
+            int current_sum = nums[a_pointer]+nums[b_pointer];
+            if(current_sum>target){
+                b_pointer--;
+            }
+            else if(current_sum  == target){
+                A[0] = a_pointer+1;A[1] = b_pointer+1;
+                break;
+            }
+            else {
+                a_pointer++;
+            }
+        }
+        return A;
+                             
+    }
+}
