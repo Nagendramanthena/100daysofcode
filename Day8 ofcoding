@@ -47,3 +47,25 @@ class Solution {
         return max;
     }
 }
+
+////////////// Third Maximum ///////
+import java.util.*;
+class Solution {
+    public int thirdMax(int[] nums) {
+        int third = 0;
+        Arrays.sort(nums);
+        ArrayList <Integer> k = new ArrayList<Integer>();
+        for(int i=nums.length-1;i>=0;i--){
+            if(!k.contains(nums[i])){
+                k.add(nums[i]);
+            }
+        }
+        if(k.size()<3){
+            third = k.get(0);
+        }
+        else{
+            third = k.get(2);
+        }
+        return third;
+    }
+}
