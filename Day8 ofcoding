@@ -12,3 +12,38 @@ class Solution {
         return res;
     }
 }
+
+////////////////////////////// MAx word You can Type //////////
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+        int max = 0;int space=0;
+        ArrayList<Character> k  = new ArrayList<Character>();
+        for(int i=0;i<brokenLetters.length();i++){
+            k.add(brokenLetters.charAt(i));
+        }
+        for(int i=0;i<text.length();i++){
+            if(text.charAt(i) == ' '){
+                String word = text.substring(space,i);
+                boolean b=false;
+                for(int j=0;j<k.size();j++){
+                    if(word.indexOf(k.get(j))!=-1){
+                        b = true;
+                    }
+                }
+                if(!b){max++;}
+                space = i;
+            }
+            else if(i == text.length()-1){
+                String word = text.substring(space,i+1);
+                boolean b  = false;
+                for(int j=0;j<k.size();j++){
+                    if(word.indexOf(k.get(j))!=-1){
+                        b = true;
+                    }
+                }
+                if(!b){max++;}
+            }
+        }
+        return max;
+    }
+}
