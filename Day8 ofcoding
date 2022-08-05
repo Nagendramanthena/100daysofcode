@@ -112,3 +112,15 @@ class Solution {
         return res;
     }
 }
+
+////////////////////////// Mean of Array after removing some ////////
+class Solution {
+    public double trimMean(int[] arr) {
+        Arrays.sort(arr);double mean = 0;
+        int ne = ((arr.length)*5)/100;
+        for(int i=ne;i<arr.length-ne;i++){
+            mean += arr[i];
+        }
+        return mean/(arr.length-(2*ne));
+    }
+}
