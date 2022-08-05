@@ -78,3 +78,37 @@ class Solution {
         
     }
 }
+
+///////////// Divide a string into groups of k ////////////////////////
+class Solution {
+    public String[] divideString(String s, int k, char fill) {
+      int l =0 ;int len = s.length();int arrle = 0;
+       if(len%k==0){arrle = len/k;}
+        else{arrle = (len/k)+1;} 
+        String res[] = new String[arrle];int m =0;
+       for(int i=1;i<s.length();i++){
+           if(k>i && k%(i+1)==0)
+           {
+               String sub = s.substring(l,i+1);
+               l=i+1;
+               res[m] = sub;m++;
+               
+           }
+           else if(k<i && (i+1)%k==0){
+               String sub = s.substring(l,i+1);
+               l= i+1;
+               res[m] = sub;m++;
+           }
+           else if(i == s.length()-1){
+               String sub  = s.substring(l,i+1);
+               if(sub.length()<k){
+                   while(sub.length()<=k-1){
+                       sub += fill;
+                   }
+                   res[m] = sub;m++;
+               }
+           }
+       } 
+        return res;
+    }
+}
