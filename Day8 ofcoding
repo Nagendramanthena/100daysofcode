@@ -33,6 +33,8 @@ class Solution {
                 if(!b){max++;}
                 space = i;
             }
+            
+            
             else if(i == text.length()-1){
                 String word = text.substring(space,i+1);
                 boolean b  = false;
