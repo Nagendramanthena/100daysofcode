@@ -69,3 +69,12 @@ class Solution {
         return third;
     }
 }
+
+/////////////////////// Kth largest element ////////////
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+       Arrays.sort(nums);
+       return nums[nums.length-k];
+        
+    }
+}
