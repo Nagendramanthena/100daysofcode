@@ -19,4 +19,28 @@ class Solution {
     }
 }
 
-////// Max consecutive ones
+////// Max consecutive ones//////
+
+///Consecutive ranks////
+
+
+import java.util.*;
+class Solution {
+    public String[] findRelativeRanks(int[] score) {
+        String res[] = new String[score.length];
+        ArrayList <Integer> a1 = new ArrayList<Integer>();
+        for(int i=0;i<score.length;i++){
+            a1.add(score[i]);
+        }
+        Collections.sort(a1);Collections.reverse(a1);
+        for(int i=0;i<score.length;i++){
+            int l = a1.indexOf(score[i]);
+            if(l==0) {res[i] = "Gold Medal" ;}
+            else if(l==1) { res[i] ="Silver Medal";}
+            else if(l==2){res[i] = "Bronze Medal";}
+            else {res[i] = String.valueOf(l+1);}
+            
+        }
+        return res;
+    }
+}
