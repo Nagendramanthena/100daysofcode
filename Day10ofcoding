@@ -44,3 +44,24 @@ class Solution {
         return res;
     }
 }
+
+
+////// Move zeros to end///
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int j=0;int zeros = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                nums[j] = nums[i];
+                j++;
+            }
+            else{
+                zeros++;
+            }
+        }
+        for(int i=nums.length-1;i>=nums.length-zeros;i--){
+            nums[i] = 0;
+        }
+    }
+}
