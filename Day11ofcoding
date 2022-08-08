@@ -35,3 +35,21 @@ class Solution {
     return sum;
     }
 }
+
+//////////////// shuffling an array////////
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int A[] = new int[nums.length];int j=0;int ra=n;int la=0;int l = nums.length;
+        while(l>0){
+        if(j%2==0){
+            A[j] = nums[la];
+            la++;j++;
+        }
+        else{
+            A[j] = nums[ra];ra++;j++;
+        }
+        l--;
+        }
+        return A;
+    }
+}
