@@ -148,3 +148,41 @@ class Solution {
         return slow;
     }
 }
+
+//////////////// Valid Parentheses ///////////////
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> st = new Stack<Character>();
+        for(int i=0;i<s.length();i++){
+            switch(s.charAt(i)){
+                    case(')'):
+                    {
+                        if(st.size()!=0 && st.peek() == '('){
+                            st.pop();
+                        }
+                        else{st.push(s.charAt(i));}
+                    }
+                    break;
+                    
+                    case('}'):
+                    {if(st.size()!=0 && st.peek() == '{') st.pop();
+                        else{st.push(s.charAt(i));}
+                    }
+                                     
+                    break;
+                                     
+                    case(']'):
+                    if(st.size()!=0 && st.peek() == '[') st.pop();
+                    else st.push(s.charAt(i));
+                    break;
+                    
+                default:
+                    st.push(s.charAt(i));
+                    break;
+                                     
+                    
+            }
+        }
+      return st.size() == 0;
+    }
+}
