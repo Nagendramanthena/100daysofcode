@@ -58,3 +58,30 @@ class Solution {
         return ans;
     }
 }
+
+
+////////////////// 1D to 2D ARRay
+class Solution {
+    public int[][] construct2DArray(int[] original, int m, int n) {
+        int A[][]  = new int[m][n];
+        int row = 0;int column = 0;
+        if(m*n == original.length){
+        for(int i=0;i<original.length;i++){
+            if(m-1>=row && n-1>=column){
+                A[row][column] = original[i];column++;
+            }
+           
+            else if(m-1>=row && column>=n){
+                row++;
+                column = 0;
+                A[row][column] = original[i];column++;
+            }
+        }
+            return A;
+        }
+        else{
+            return new int[0][];
+        }
+        
+    }
+}
