@@ -101,3 +101,15 @@ class Solution {
         return max;
     }
 }
+
+/////////////// 0ms Approach
+class Solution {
+    public int getMinDistance(int[] nums, int target, int start) {
+        int x=Integer.MAX_VALUE;
+        for(int i=0;i<nums.length && x>Math.abs(i-start);i++){
+            if(nums[i]==target) 
+                x=Math.abs(i-start);
+        }
+        return x;
+    }
+}
