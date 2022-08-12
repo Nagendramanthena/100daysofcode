@@ -5,3 +5,24 @@ class Solution {
     }
     
 }
+
+//////////////// Add Digits ////////
+class Solution {
+    public int sum(int x){
+        if(x==0){
+           return 0;
+        }
+        return sum(x/10)+x%10;
+        
+    }
+    public int addDigits(int num) {
+        int k  = sum(num);
+        while(k>9){
+            k = sum(k);
+        }
+        
+
+      return k;
+    }
+}
+
