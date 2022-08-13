@@ -68,3 +68,11 @@ class Solution {
         return dummyHead.next;
     }
 }
+
+////////////  delete a nod with current givennode as hint ////
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}
