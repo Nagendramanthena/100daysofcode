@@ -153,3 +153,44 @@ class Solution {
     }
 }
 
+////////////// Merge Nodes in between Zeros //////
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeNodes(ListNode head) {
+        ListNode k = head.next;
+        ArrayList<Integer> a = new ArrayList<Integer>();int sum = 0;
+        while(k.next!=null){
+            if(k.val==0){
+                a.add(sum);sum = 0;
+            }
+            else{
+                sum+=k.val;
+            }
+            k = k.next;
+        }
+        a.add(sum);
+        ListNode hea = new ListNode();
+        Collections.reverse(a);
+        for(int i=0;i<a.size();i++){
+            ListNode n = new ListNode(a.get(i),null);
+            if(i==0)
+                hea = n;
+            else{
+                n.next = hea;
+                hea = n;
+            }
+        }
+        return hea;
+        
+    }
+}
+
