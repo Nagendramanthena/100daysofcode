@@ -109,3 +109,28 @@ class Solution {
     }
 }
 
+//////////// reverse a LinkedList //////
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ArrayList<Integer> k = new ArrayList<Integer>();
+        ListNode temp = head;
+        if(head==null){return head;}
+        while(temp!=null){
+            k.add(temp.val);temp=temp.next;
+        }
+        ListNode headd = new ListNode();
+        for(int i=0;i<k.size();i++){
+            ListNode ne = new ListNode(k.get(i),null);
+            if(i==0){
+                headd = ne;
+            }
+            else{
+                ne.next = headd;
+                headd= ne;
+            }
+            
+        }
+        return headd;
+    }
+}
+
