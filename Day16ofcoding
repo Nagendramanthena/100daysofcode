@@ -76,3 +76,36 @@ class Solution {
         node.next = node.next.next;
     }
 }
+
+/////////// Maximum Twin sum in a LinkedList ////////
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int pairSum(ListNode head) {
+        ListNode temp = head;int size = 0;int max = 0;
+        while(temp!=null){
+            temp  = temp.next;
+            size++;
+        }
+        temp = head;int it = 0;int A[] = new int[size/2];
+       for(int i=0;i<size/2;i++){
+           A[it] = temp.val;temp = temp.next;it++;
+       }
+        for(int i =size/2;i<size;i++){
+              A[size-it-1] += temp.val;
+               it++;temp = temp.next; 
+        }
+        Arrays.sort(A);
+        max = A[A.length-1];
+        return max;
+    }
+}
+
