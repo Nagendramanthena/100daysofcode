@@ -39,3 +39,21 @@ class Solution {
         return true;
     }
 }
+
+//////////// Linked List cycle /////
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode temp = head;int size=0;
+        while(temp!=null){
+            size++;
+            if(size>Math.pow(10,4)){
+                return true;
+            }
+            temp = temp.next;
+            
+        }
+        return false;
+        
+    }
+}
+
