@@ -22,3 +22,20 @@ class Solution {
         return newhead;
     }
 }
+/////// Palindrome LinkedList //////
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ArrayList<Integer> k = new ArrayList<Integer>();
+        ListNode temp = head;
+        while(temp!=null){
+            k.add(temp.val);temp = temp.next;
+        }
+        for(int i=0;i<k.size()/2;i++){
+            if(k.get(i) != k.get(k.size()-i-1)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
