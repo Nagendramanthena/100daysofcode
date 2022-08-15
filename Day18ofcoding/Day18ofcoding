@@ -1,0 +1,24 @@
+////////// Remove Duplicates from sorted list ///////
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+     ArrayList<Integer> k = new ArrayList<Integer>();
+        if(head == null){return null;}
+        ListNode temp = head;
+        while(temp!=null){
+            if(!k.contains(temp.val)){
+                k.add(temp.val);
+            }
+            temp = temp.next;
+        }
+        ListNode newhead = new ListNode(k.get(0),null);
+        for(int i=1;i<k.size();i++){
+            ListNode India = new ListNode(k.get(i),null);
+            temp =newhead;
+            while(temp.next!=null){
+                temp = temp.next;
+            }
+            temp.next = India;
+        }
+        return newhead;
+    }
+}
