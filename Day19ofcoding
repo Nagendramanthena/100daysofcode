@@ -67,3 +67,27 @@ class Solution {
         return before_head.next;
     }
 }
+///////// Rotate List ///////
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head == null || head.next == null){return head;}
+        ListNode j  = head;int size = 0;
+        while(j!=null){j = j.next;size++;}
+        k = k%size;
+      while(k>0){
+          ListNode temp = head;
+          while(temp.next.next!=null){
+              temp = temp.next;
+          }
+          int value = temp.next.val;
+          temp.next  = null;
+          ListNode n = new ListNode(value);
+          n.next  = head;
+          head = n;
+          k--;
+          
+          
+      }
+        return head;
+    }
+}
