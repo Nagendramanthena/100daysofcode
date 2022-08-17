@@ -46,3 +46,14 @@ class Solution {
         return matches;
     }
 }
+/////////// power of 2 //
+  long power = Long.MIN_VALUE;int x = 0;
+        while(power<n){
+            power = (long) Math.pow(2,x);
+            x++;
+        }
+        if(power == n){
+            return true;
+        }
+        return false;
+    }
