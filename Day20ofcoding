@@ -8,3 +8,25 @@ class Solution {
         return A;
     }
 }
+
+
+//// Set  Matrix Zero ///////
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        ArrayList<Integer>  row =new ArrayList<Integer>();
+        ArrayList<Integer>  column =new ArrayList<Integer>();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(matrix[i][j] == 0){
+                       row.add(i);column.add(j); 
+                    }
+                }
+            }
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(row.contains(i) || column.contains(j)){matrix[i][j] = 0;}
+            }
+        }
+        }
+    }
