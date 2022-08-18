@@ -50,4 +50,20 @@ class Solution {
     }
 }
 
-//////////////// 
+//////////////// 1716 ///////////
+class Solution {
+    public int totalMoney(int n) {
+        int total = 0;int number_of_weeks = n/7;int week = 28;int monday = 1;
+        
+        
+        int remaining_days = n%7;
+        while(number_of_weeks>0){
+            total += week;week = week+7;monday++;number_of_weeks--;;
+        }
+        while(remaining_days>0){
+            total += monday;monday++;remaining_days--;
+        }
+        return total;
+        
+    }
+}
