@@ -1,0 +1,29 @@
+public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null) return root;
+        if(root.val == val){
+            return root;
+        }
+        else{
+            return val<root.val? searchBST(root.left,val):searchBST(root.right,val);
+        }
+    }
+    
+    class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);TreeNode newroot = null;
+        while(!q.isEmpty()){
+            TreeNode t = q.remove();
+            if(t.val == val){
+                newroot = t;
+            }
+            if(t.left!=null){
+                q.add(t.left);
+            }
+            if(t.right!=null){
+                q.add(t.right);
+            }
+        }
+        return newroot;
+    }
+}
