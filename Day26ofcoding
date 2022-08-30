@@ -99,3 +99,29 @@ class Solution {
         return b;
     }
 }
+
+///////////// Two sum ////////
+class Solution {
+    List<Integer> k = new ArrayList<Integer>();
+    
+    public void dfs(TreeNode root){
+        if(root == null){
+            return;
+        }
+        dfs(root.left);
+        k.add(root.val);
+        dfs(root.right);
+    }
+    public boolean findTarget(TreeNode root, int target) {
+        dfs(root);
+        for(int i=0;i<k.size();i++){
+            for(int j=0;j<k.size();j++){
+                if(i!=j && k.get(i)+k.get(j) == target){
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+}
