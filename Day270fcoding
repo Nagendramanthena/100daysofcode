@@ -63,3 +63,30 @@
         return sum;
     }
 }
+
+////////////// grandparent even /////////////////
+class Solution {
+    int nodes = 0;
+    
+    public void dfs(TreeNode root){
+        if(root == null){
+            return;
+        }
+        if((root.val)%2 == 0){
+            if(root.left!=null){
+                if(root.left.left!=null){nodes+=root.left.left.val;}
+                if(root.left.right!=null){nodes+=root.left.right.val;}
+            }
+            if(root.right!=null){
+                if(root.right.left!=null){nodes+= root.right.left.val;}
+                if(root.right.right!=null){nodes+= root.right.right.val;}
+            }
+        }
+        dfs(root.left);
+        dfs(root.right);
+    }
+    public int sumEvenGrandparent(TreeNode root) {
+        dfs(root);
+        return nodes;
+    }
+}
