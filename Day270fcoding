@@ -40,3 +40,26 @@
         }
         return sum;
     }
+    
+    
+    // Range sum binarytree(938) ////////
+    class Solution {
+    int sum = 0;int lower = 0;int higher = 0;
+    
+    public void dfs(TreeNode root){
+        if(root == null){
+            return;
+        }
+        dfs(root.left);
+        dfs(root.right);
+        if(root.val>=lower && root.val<=higher){
+            sum += root.val;
+        }
+        
+    }
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        lower = low;higher = high;
+        dfs(root);
+        return sum;
+    }
+}
